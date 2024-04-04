@@ -43,8 +43,7 @@ kalman.transitionMatrix = \
         [0,0,1,0],
         [0,0,0,1]], np.float32)
 # w
-kalman.processNoiseCov = \ 
-    np.array([
+kalman.processNoiseCov =  np.array([
         [1,0,0,0],
         [0,1,0,0],
         [0,0,1,0],

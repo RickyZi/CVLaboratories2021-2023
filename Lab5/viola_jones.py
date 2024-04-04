@@ -9,10 +9,11 @@ MINSIZE = (30, 30)
 COLOR_FRONT = (255,0,255)
 COLOR_PROFILE = (255,0,0)
 
-face_cascade_front_path = '../material/haarcascade_frontalface_alt2.xml'
+face_cascade_front_path = '../material/haarcascade_frontalcatface_extended.xml' #'../material/haarcascade_frontalface_alt2.xml'
 face_cascade_profile_path = '../material/haarcascade_profileface.xml'
 
 minecraft_image = cv2.imread('../material/minecraft.png')
+emoji_image = cv2.imread('../material/grrr_reaction.png')
 
 cap = cv2.VideoCapture(0)
 
@@ -41,8 +42,8 @@ while cap.isOpened():
         # 3] NEGATIVE
         # frame[y:y+h, x:x+w] = cv2.bitwise_not(frame[y:y+h, x:x+w])
         # 4] EMOJI
-        # minecraft_resize = cv2.resize(minecraft_image, (w, h)) 
-        # frame[y:y+h, x:x+w] = minecraft_resize
+        minecraft_resize = cv2.resize(emoji_image, (w, h)) 
+        frame[y:y+h, x:x+w] = minecraft_resize
 
     for (x,y,w,h) in detected_profile:
         cv2.rectangle(frame, (x, y),(x + w, y + h), COLOR_PROFILE, 3)
@@ -51,3 +52,6 @@ while cap.isOpened():
     cv2.imshow("video", frame)
     if cv2.waitKey(1) == ord('q'):
         break
+
+cap.release()
+cv2.destroyAllWindows()

@@ -7,7 +7,7 @@ MAX_FRAMES = 1000
 THRESH = 50
 MAXVAL = 255
 
-webcam = True
+webcam = False
 
 if webcam:
     cap = cv2.VideoCapture(1)
